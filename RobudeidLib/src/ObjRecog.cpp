@@ -1,6 +1,6 @@
 #include "ObjRecog.h"
 
-ObjRecog::ObjRecog(char* SVMmodel, char* dictPath):
+ObjRecog::ObjRecog(const char* SVMmodel, const char* dictPath):
 	minHessian(400),
 	flag_predict_probability(false),
 	max_nr_attr(512)
@@ -20,7 +20,7 @@ ObjRecog::~ObjRecog()
 	free_and_destroy_model(&model_);
 }
 
-bool ObjRecog::loadBowDict(char* dictPath)
+bool ObjRecog::loadBowDict(const char* dictPath)
 {
 	FileStorage fs(dictPath, FileStorage::READ);
 	if( fs.isOpened() )
@@ -41,15 +41,17 @@ pair<double,double> ObjRecog::objEstimate(Mat img, Mat mask)
 	dilate( mask, objMask, objEl);
 	dilate( mask, localFeatureMask, localfeatureEl);
 	img.copyTo(obj, objMask);
-
-	double* bowFeature = featureExtraction(obj, localFeatureMask);
-	/*for(int i=0; i<nr_feature; ++i)
-		cout<<bowFeature[i]<<" ";
-	cout<<endl;*/
-	return do_predict(bowFeature);
+	
+	int flag;
+	double* bowFeature = featureExtraction(obj, localFeatureMask, flag);
+	//double* bowFeature = featureExtraction(img, mask, flag);
+	if(flag)	//cornor less than 10
+		return make_pair(ANOMALY, 0.5);
+	else
+		return do_predict(bowFeature);
 }
 
-double* ObjRecog::featureExtraction(Mat obj, Mat localFeatureMask)
+double* ObjRecog::featureExtraction(Mat img, Mat mask, int& flag)
 {
 	Ptr<DescriptorMatcher> matcher(new FlannBasedMatcher);	
 	Ptr<FeatureDetector> detector(new SurfFeatureDetector());
@@ -59,10 +61,16 @@ double* ObjRecog::featureExtraction(Mat obj, Mat localFeatureMask)
 	vector<KeyPoint> cornor;
 	Mat bowDescriptor;	
 	double *feature = new double[nr_feature];
-	detector->detect(obj, cornor, localFeatureMask);	
-	if(cornor.size()>0)
+	detector->detect(img, cornor, mask);	
+	flag = false;
+
+	/*Mat mCornor;
+	drawKeypoints(img, cornor,  mCornor, Scalar::all(-1),DrawMatchesFlags::DEFAULT);  
+	imshow("mCornor", mCornor);*/
+
+	if(cornor.size()>10)
 	{
-		bowDE.compute(obj, cornor, bowDescriptor);	// 0~1	
+		bowDE.compute(img, cornor, bowDescriptor);	// 0~1	
 		bowDescriptor *= 100;
 		bowDescriptor.convertTo(bowDescriptor, CV_8U);
 		for(int i=0; i<nr_feature; ++i)
@@ -72,6 +80,7 @@ double* ObjRecog::featureExtraction(Mat obj, Mat localFeatureMask)
 	{
 		for(int i=0; i<nr_feature; ++i)
 			feature[i] = 0;
+		flag = true;
 	}
 								
 	return feature;
@@ -116,12 +125,11 @@ pair<double,double> ObjRecog::do_predict(double* feature)
 
 #ifdef SHOW_CONFIDENCE
 		for(int i=0;i<model_->nr_class;i++)		
-			cout<<(int)(bound_check(prob_estimates[i]) * 100) <<"%\t";								
+			cout<<(int)(prob_estimates[i] * 100) <<"%\t";								
 		cout<<endl;	
-#endif
-				
+#endif						
+		predict_label_pr = make_pair(predict_label, prob_estimates[(int)predict_label-1]);
 		free(prob_estimates);
-		predict_label_pr = make_pair(predict_label, bound_check(prob_estimates[(int)predict_label]));
 	}
 	else	
 	{

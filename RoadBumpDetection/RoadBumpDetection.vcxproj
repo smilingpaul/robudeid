@@ -64,7 +64,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\packages\OpenCV\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -72,6 +72,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>..\packages\OpenCV\x86\lib;..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>RobudeidLib.lib;opencv_calib3d246.lib;opencv_core246.lib;opencv_features2d246.lib;opencv_flann246.lib;opencv_gpu246.lib;opencv_highgui246.lib;opencv_imgproc246.lib;opencv_legacy246.lib;opencv_ml246.lib;opencv_nonfree246.lib;opencv_objdetect246.lib;opencv_video246.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

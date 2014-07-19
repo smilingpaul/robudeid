@@ -50,7 +50,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src;..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -64,7 +64,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src;..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
