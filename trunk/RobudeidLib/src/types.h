@@ -1,7 +1,14 @@
 #ifndef __types_
 #define __types_
 
-#define ROBUDEID_EXPORTS   __declspec(dllexport)
+#ifdef _WINDLL
+#  define ROBUDEID_EXPORTS __declspec(dllexport)
+#else
+#  define ROBUDEID_EXPORTS
+#endif
+
+#define ANOMALY 1
+#define HUMP 2
 
 #include <iostream>
 #include <cstdio>

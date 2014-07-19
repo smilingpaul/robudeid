@@ -6,8 +6,8 @@
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
 
-#define other 1
-#define bar 2
+#define ANOMALY 1
+#define HUMP 2
 
 #define DEMO
 //#define EXPERIMENT

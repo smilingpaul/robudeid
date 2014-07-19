@@ -6,8 +6,6 @@
 #include "ObjDetection.h"
 #include "ObjRecog.h"
 
-#define BUMP_STATE	1
-#define OBJ_DETECTION_STATE	2
 
 class ORapplication
 {
@@ -28,10 +26,11 @@ private:
 	
 	int videoLen, fps, sec, fid, playSpeed;
 	VideoCapture capture;
-
 	Mat frame;
 	Rect rectROI;
 	Mat ROI;
+
+	ObjRecog* recog;
 };
 
 #endif	//#ifndef __ORapplication_

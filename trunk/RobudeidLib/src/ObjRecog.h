@@ -10,13 +10,13 @@
 class ROBUDEID_EXPORTS ObjRecog
 {
 public:
-	ObjRecog(char* SVMmodel, char* dictPath);
+	ObjRecog(const char* SVMmodel, const char* dictPath);
 	~ObjRecog();		
 	pair<double,double> objEstimate(Mat img, Mat mask);
 	pair<double,double> do_predict(double* feature);
-	double* featureExtraction(Mat img, Mat mask);
+	double* featureExtraction(Mat img, Mat mask, int& flag);
 
-	bool loadBowDict(char* dictPath);
+	bool loadBowDict(const char* dictPath);
 
 private:		
 	Mat dictionary;	//bag of word dictionary

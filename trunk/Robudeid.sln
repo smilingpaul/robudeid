@@ -9,9 +9,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blas", "packages\Blas\Blas.vcxproj", "{6D946FF6-F8BA-4A17-AFA4-3925BE3A999E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RoadBumpDetection", "RoadBumpDetection\RoadBumpDetection.vcxproj", "{2ADC3D67-A441-4FBB-A100-4F5EBF5E8A9A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F02256AC-83DE-4644-BA3B-C8A664841CC4} = {F02256AC-83DE-4644-BA3B-C8A664841CC4}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ObjectRecognition", "ObjectRecognition\ObjectRecognition.vcxproj", "{077BC5D5-3C9C-4EB2-848F-A4F09380D2D9}"
 	ProjectSection(ProjectDependencies) = postProject

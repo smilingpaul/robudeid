@@ -5,6 +5,7 @@ ORapplication::ORapplication():
 	sec(0),
 	playSpeed(0)	
 {			
+	recog = new ObjRecog(Pubvar::SVMmodel.c_str(), Pubvar::dictPath.c_str());
 }
 
 ORapplication::~ORapplication()
@@ -63,8 +64,12 @@ inline void ORapplication::processing()
 	add(obj, Scalar(0,0,255), obj, objMask);
 	imshow("ROI", ROI);
 	imshow("detected obj", obj);
+	pair<double,double> label_pr = recog->objEstimate(frame(rectROI), objMask);
+
+	double pr = 100 * (label_pr.first == HUMP? label_pr.second : 1-label_pr.second);		//probability of raod hump
+	putText(frame, "HUMP: " + to_string(pr) + "%" , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );	
 	//pair<double,double> label_pr = ObjRecog::getSingleton()->objEstimate(frame(rectROI), objMask);
-	//cout<<label_pr<<endl;	
+	cout<< label_pr.first<<"   "<< label_pr.second<<endl;	
 }
 
 void ORapplication::fidControler(int val, void* _this)
