@@ -34,6 +34,7 @@ bool ObjRecog::loadBowDict(const char* dictPath)
 pair<double,double> ObjRecog::objEstimate(Mat img, Mat mask)
 {
 	CV_Assert(img.size() == mask.size());
+	int flag;
 	Mat obj, objMask, localFeatureMask;
 	Mat objEl = getStructuringElement( MORPH_RECT, Size(7, 7)),
 		localfeatureEl = getStructuringElement( MORPH_RECT, Size(5, 5));
@@ -41,8 +42,7 @@ pair<double,double> ObjRecog::objEstimate(Mat img, Mat mask)
 	dilate( mask, objMask, objEl);
 	dilate( mask, localFeatureMask, localfeatureEl);
 	img.copyTo(obj, objMask);
-	
-	int flag;
+		
 	double* bowFeature = featureExtraction(obj, localFeatureMask, flag);
 	//double* bowFeature = featureExtraction(img, mask, flag);
 	if(flag)	//cornor less than 10

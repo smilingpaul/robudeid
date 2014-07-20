@@ -10,9 +10,15 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CodebookGeneration.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CodebookGeneration.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{2ADC3D67-A441-4FBB-A100-4F5EBF5E8A9A}</ProjectGuid>
-    <RootNamespace>RoadBumpDetection</RootNamespace>
+    <ProjectGuid>{188BB352-3B93-4A5C-9B28-09DBC705D371}</ProjectGuid>
+    <RootNamespace>TrainBow</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -39,22 +45,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>bin\$(Configuration)\</OutDir>
+    <OutDir>..\..\bin\$(Configuration)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\bin\$(Configuration)\</OutDir>
+    <OutDir>..\..\bin\$(Configuration)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src;..\RobudeidLib\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\packages\OpenCV\include;..\..\packages\LibLinear\src;..\..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\packages\OpenCV\x86\lib;..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\packages\OpenCV\x86\lib;..\..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>RobudeidLib.lib;opencv_calib3d246.lib;opencv_core246.lib;opencv_features2d246.lib;opencv_flann246.lib;opencv_gpu246.lib;opencv_highgui246.lib;opencv_imgproc246.lib;opencv_legacy246.lib;opencv_ml246.lib;opencv_nonfree246.lib;opencv_objdetect246.lib;opencv_video246.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -64,26 +70,16 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\packages\OpenCV\include;..\packages\LibLinear\src;..\RobudeidLib\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\packages\OpenCV\include;..\..\packages\LibLinear\src;..\..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\packages\OpenCV\x86\lib;..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\packages\OpenCV\x86\lib;..\..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>RobudeidLib.lib;opencv_calib3d246.lib;opencv_core246.lib;opencv_features2d246.lib;opencv_flann246.lib;opencv_gpu246.lib;opencv_highgui246.lib;opencv_imgproc246.lib;opencv_legacy246.lib;opencv_ml246.lib;opencv_nonfree246.lib;opencv_objdetect246.lib;opencv_video246.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Pubvar.cpp" />
-    <ClCompile Include="src\RApplication.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\Pubvar.h" />
-    <ClInclude Include="src\RApplication.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
