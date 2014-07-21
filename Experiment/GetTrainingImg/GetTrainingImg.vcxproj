@@ -50,11 +50,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\packages\OpenCV\include;..\packages\LibLinear\src;..\RobudeidLib\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\packages\OpenCV\include;..\..\packages\LibLinear\src;..\..\RobudeidLib\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\packages\OpenCV\x86\lib;..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\packages\OpenCV\x86\lib;..\..\RobudeidLib\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>RobudeidLib.lib;opencv_calib3d246.lib;opencv_core246.lib;opencv_features2d246.lib;opencv_flann246.lib;opencv_gpu246.lib;opencv_highgui246.lib;opencv_imgproc246.lib;opencv_legacy246.lib;opencv_ml246.lib;opencv_nonfree246.lib;opencv_objdetect246.lib;opencv_video246.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
