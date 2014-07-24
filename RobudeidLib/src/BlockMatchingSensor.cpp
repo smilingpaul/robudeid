@@ -24,7 +24,7 @@ BlockMatchingSensor::~BlockMatchingSensor()
 	lastVSlice.release();
 }
 
-Point2d BlockMatchingSensor::sense(Mat frame)
+Point2d BlockMatchingSensor::sense(const Mat& frame, int fid)
 {	
 	if(curHSlice.empty())	
 		init_exec(frame);
@@ -113,7 +113,7 @@ void BlockMatchingSensor::showTimeSlice()
 	imshow("vertical of time slice image",mTsiV(Range::all(),Range(0,tsiIdx)));
 }
 
-void BlockMatchingSensor::reset()
+void BlockMatchingSensor::reset(int fid)
 {
 	tsiIdx = 0;
 }

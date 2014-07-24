@@ -101,6 +101,7 @@
     <ClCompile Include="src\BDetector.cpp" />
     <ClCompile Include="src\BlockMatchingSensor.cpp" />
     <ClCompile Include="src\Graph.cpp" />
+    <ClCompile Include="src\GSensor.cpp" />
     <ClCompile Include="src\ObjDetection.cpp" />
     <ClCompile Include="src\ObjRecog.cpp" />
     <ClCompile Include="src\PhaseBasedSensor.cpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="src\BDetector.h" />
     <ClInclude Include="src\BlockMatchingSensor.h" />
     <ClInclude Include="src\Graph.h" />
+    <ClInclude Include="src\GSensor.h" />
     <ClInclude Include="src\ObjDetection.h" />
     <ClInclude Include="src\ObjRecog.h" />
     <ClInclude Include="src\PhaseBasedSensor.h" />

@@ -12,7 +12,9 @@ RApplication::RApplication():
 	if(Pubvar::sensorMethod==BLOCK_MATCHING)
 		sensor = new BlockMatchingSensor();
 	else if(Pubvar::sensorMethod==PHASE_BASED)
-		sensor = new PhaseBasedSensor();			
+		sensor = new PhaseBasedSensor();	
+	else if(Pubvar::sensorMethod==G_SENSOR)
+		sensor = new GSensor(Pubvar::nmeaPath);	
 }
 
 RApplication::~RApplication()
@@ -39,9 +41,6 @@ void RApplication::go()
 	for(int i=0; i<videoLen;++i)
 		fidOI[i] = false;
 
-	int height = (int)capture.get(CV_CAP_PROP_FRAME_HEIGHT),
-		width = (int)capture.get(CV_CAP_PROP_FRAME_WIDTH);	
-	
 	cout<<"[a]: rewind"<<endl<<"[d]: forward"<<endl<<"[p]: pause / continue"<<endl<<"[o]: object detection"<<endl;
 
 	for (fid=0; fid < videoLen; ++fid)
@@ -73,15 +72,14 @@ void RApplication::go()
 }
 
 inline void RApplication::processing()
-{	
-	Mat roadMask, road;
-	Point2d shift = sensor->sense(frame);
+{		
+	Point2d shift = sensor->sense(frame,fid);
 	if(isSkip)	//video move forward or backward, therefore shift will become 0 now
 		shift = Point2d(0,0);
 
 	hLineGraph->insert( (int)shift.x );
 	vLineGraph->insert( (int)shift.y );
-
+	//cout<<shift<<" "<<fid<<endl;
 #ifdef DEMO
 	imshow("horizontal", hLineGraph->update().t());
 	imshow("vertical", vLineGraph->update());
@@ -91,10 +89,6 @@ inline void RApplication::processing()
 	bDtr->update(shift);
 	if(bDtr->isBump()!= NOBUMP)
 		putText(frame, "uneven!! " , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );	
-}
-
-void RApplication::expProcessing()
-{	
 }
 
 void RApplication::fidControler(int val, void* _this)
