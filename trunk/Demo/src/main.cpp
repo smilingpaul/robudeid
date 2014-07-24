@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Pubvar.h"
-#include "ORapplication.h"
+#include "DApplication.h"
 
 using namespace std;
 
@@ -27,7 +27,15 @@ void initParm()
 		else if(string(tkn) == "dictPath")		
 			Pubvar::dictPath = strtok(NULL,delim);	
 		else if(string(tkn) == "SVMmodel")		
-			Pubvar::SVMmodel = strtok(NULL,delim);			
+			Pubvar::SVMmodel = strtok(NULL,delim);	
+		else if(string(tkn) == "nmeaPath")				
+			Pubvar::nmeaPath = strtok(NULL,delim);
+		else if(string(tkn) == "demoVideoPath")				
+			Pubvar::demoVideoPath = strtok(NULL,delim);
+		else if(string(tkn) == "sensorMethod")	
+			Pubvar::sensorMethod = atoi(strtok(NULL,delim));		
+		else if(string(tkn) == "sensitive")		
+			Pubvar::sensitive = atoi(strtok(NULL,delim));	
 		else if(string(tkn) == "ROI_UP")		
 			Pubvar::ROI_UP = atof(strtok(NULL,delim));
 		else if(string(tkn) == "ROI_DOWN")		
@@ -50,5 +58,6 @@ void main(int argc, char* argv[])
 	if(argc>1)
 		Pubvar::videoPath = argv[1];
 	
-	ORapplication::getSingleton()->go();	
+	DApplication::getSingleton()->go();	
+	delete DApplication::singleton;
 }

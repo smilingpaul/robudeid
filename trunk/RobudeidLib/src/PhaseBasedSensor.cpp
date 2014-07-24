@@ -18,7 +18,7 @@ PhaseBasedSensor::~PhaseBasedSensor()
 		subFrame[i].release();
 }
 
-Point2d PhaseBasedSensor::sense(Mat frame)
+Point2d PhaseBasedSensor::sense(const Mat& frame, int fid)
 {		
 	int sItr = 0;
 	double dx[9], dy[9];

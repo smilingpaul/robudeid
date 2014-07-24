@@ -15,15 +15,17 @@ void initParm()
 		return;	//ini not found
 
 	char buf[1000];	
+	char* delim = "\t#= ";
 	while(fin.getline(buf,sizeof(buf)))
 	{		
 		if(buf[0]=='#' || buf[0]=='\0' || (buf[0]=='[' && buf[strlen(buf)-1]==']'))	// [XXXX]
-			continue;		
-		char* delim = "\t#= ";
+			continue;				
 		char* tkn = strtok(buf,delim);		
 		
 		if(string(tkn) == "videoPath")				
 			Pubvar::videoPath = strtok(NULL,delim);
+		else if(string(tkn) == "nmeaPath")				
+			Pubvar::nmeaPath = strtok(NULL,delim);
 		else if(string(tkn) == "sensorMethod")	
 			Pubvar::sensorMethod = atoi(strtok(NULL,delim));		
 		else if(string(tkn) == "sensitive")		

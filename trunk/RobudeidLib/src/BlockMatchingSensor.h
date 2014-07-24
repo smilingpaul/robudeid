@@ -8,8 +8,8 @@ class ROBUDEID_EXPORTS BlockMatchingSensor : public Sensor
 public:
 	BlockMatchingSensor();
 	~BlockMatchingSensor();
-	virtual Point2d sense(Mat frame);
-	virtual void reset();	
+	virtual Point2d sense(const Mat& frame, int fid = 0);
+	virtual void reset(int fid = 0);	
 
 protected:
 	virtual double horizontal();

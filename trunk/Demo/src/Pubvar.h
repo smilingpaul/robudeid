@@ -10,8 +10,8 @@
 #define PHASE_BASED	2
 #define G_SENSOR	3
 
-#define DEMO
-//#define EXPERIMENT
+#define ANOMALY 1
+#define HUMP 2
 
 using namespace std;
 using namespace cv;
@@ -22,11 +22,22 @@ public:
 	Pubvar();
 	~Pubvar();
 
-	static string videoPath, nmeaPath;
+	static string videoPath, nmeaPath, dictPath, SVMmodel, demoVideoPath;
 	static int sensitive,			   
 			   sensorMethod;	
 
 	static bool detectTurn;	//we dont use in this version	
+
+	/**object detection*/
+	static double ROI_UP,		
+				  ROI_DOWN,
+				  ROI_LEFT,
+				  ROI_RIGHT,
+				  INIT_ROAD_WINSIZE ,
+				  OBJ_WINSIZE;
+
+	static double diOfError,
+				  mdOfError;
 };
 
 

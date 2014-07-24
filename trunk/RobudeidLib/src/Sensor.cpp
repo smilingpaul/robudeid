@@ -9,12 +9,12 @@ Sensor::~Sensor()
 {
 }
 
-Point2d Sensor::sense(Mat frame)
+Point2d Sensor::sense(const Mat& frame, int fid)
 {
 	return Point2d(0,0);
 }
 
-void Sensor::reset()
+void Sensor::reset(int fid)
 {
 }
 

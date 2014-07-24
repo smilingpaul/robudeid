@@ -4,6 +4,7 @@
 #include <fstream>
 #include "BlockMatchingSensor.h"
 #include "PhaseBasedSensor.h"
+#include "GSensor.h"
 #include "BDetector.h"
 #include "Graph.h"
 #include "Pubvar.h"
@@ -22,8 +23,7 @@ private:
 	static void fidControler(int, void*);
 	
 	void writeVideo();
-	inline void processing();
-	void expProcessing();	
+	inline void processing();	
 	inline void videoMove(int _fid);
 	bool keyboardCtrl(char btn);
 
@@ -37,8 +37,6 @@ private:
 	BDetector* bDtr;
 	Graph* hLineGraph;
 	Graph* vLineGraph;
-	Rect rectROI;
-	Mat ROI;
 
 	//bump video
 	bool* fidOI;

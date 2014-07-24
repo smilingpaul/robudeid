@@ -6,6 +6,7 @@
 #define NOBUMP 0
 #define CONVEX 1
 #define CONCAVE 2
+#define BUMP 3
 
 #define other 1
 #define bar 2
@@ -32,7 +33,8 @@ public:
 	void evtClear();
 
 protected:	
-	int maxShift, bumpThr, winSize;	
+	size_t detectionWinSize, recogWinSize;
+	int maxShift, bumpThr, bumpinSize;	
 	bool detectTurn;
 
 	int *distribution;	//data distribution, for finding min max

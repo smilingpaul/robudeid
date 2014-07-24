@@ -8,7 +8,7 @@ class ROBUDEID_EXPORTS PhaseBasedSensor : public Sensor
 public:
 	PhaseBasedSensor();
 	~PhaseBasedSensor();
-	virtual Point2d sense(Mat frame); 
+	virtual Point2d sense(const Mat& frame, int fid = 0); 
 	
 protected:	
 	virtual void showSubFrame();

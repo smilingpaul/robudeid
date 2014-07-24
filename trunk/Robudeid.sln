@@ -36,6 +36,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrainBow", "Experiment\Trai
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrainSVM", "Experiment\TrainSVM\TrainSVM.vcxproj", "{7DDF404D-F363-4A5C-A81F-6EB55BF1A5DB}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Demo", "Demo\Demo.vcxproj", "{C49E73C5-491F-4027-B671-3D6AF2D75548}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F02256AC-83DE-4644-BA3B-C8A664841CC4} = {F02256AC-83DE-4644-BA3B-C8A664841CC4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -74,6 +79,10 @@ Global
 		{7DDF404D-F363-4A5C-A81F-6EB55BF1A5DB}.Debug|Win32.Build.0 = Debug|Win32
 		{7DDF404D-F363-4A5C-A81F-6EB55BF1A5DB}.Release|Win32.ActiveCfg = Release|Win32
 		{7DDF404D-F363-4A5C-A81F-6EB55BF1A5DB}.Release|Win32.Build.0 = Release|Win32
+		{C49E73C5-491F-4027-B671-3D6AF2D75548}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C49E73C5-491F-4027-B671-3D6AF2D75548}.Debug|Win32.Build.0 = Debug|Win32
+		{C49E73C5-491F-4027-B671-3D6AF2D75548}.Release|Win32.ActiveCfg = Release|Win32
+		{C49E73C5-491F-4027-B671-3D6AF2D75548}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
