@@ -120,12 +120,12 @@ void GTIApplication::saveImage(int opt)
 	strFname +="_";
 	if(opt==HUMP)
 	{		
-		imwrite(Pubvar::trainingImgPath + "/hump/" + strFname + to_string(bar_file_idx)+".jpg" ,  obj);		
+		imwrite(Pubvar::trainingImgPath + "/hump/" + strFname + to_string(bar_file_idx)+".jpg" ,  frame(rectROI));		
 		imwrite(Pubvar::trainingImgPath + "/hump/mask/" + strFname + to_string(bar_file_idx++)+".jpg" ,  objMask);
 	}
 	else if(opt==ANOMALY)
 	{		
-		imwrite(Pubvar::trainingImgPath + "/anomaly/" + strFname + to_string(other_file_idx)+".jpg" ,  obj);
+		imwrite(Pubvar::trainingImgPath + "/anomaly/" + strFname + to_string(other_file_idx)+".jpg" ,  frame(rectROI));
 		imwrite(Pubvar::trainingImgPath + "/anomaly/mask/" + strFname + to_string(other_file_idx++)+".jpg" ,  objMask);
 	}
 }
