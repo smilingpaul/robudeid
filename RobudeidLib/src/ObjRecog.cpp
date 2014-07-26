@@ -35,7 +35,7 @@ pair<double,double> ObjRecog::objEstimate(Mat img, Mat mask)
 {
 	CV_Assert(img.size() == mask.size());
 	int flag;
-	Mat obj, objMask, localFeatureMask;
+	/*Mat obj, objMask, localFeatureMask;
 	Mat objEl = getStructuringElement( MORPH_RECT, Size(7, 7)),
 		localfeatureEl = getStructuringElement( MORPH_RECT, Size(5, 5));
 
@@ -43,8 +43,8 @@ pair<double,double> ObjRecog::objEstimate(Mat img, Mat mask)
 	dilate( mask, localFeatureMask, localfeatureEl);
 	img.copyTo(obj, objMask);
 		
-	double* bowFeature = featureExtraction(obj, localFeatureMask, flag);
-	//double* bowFeature = featureExtraction(img, mask, flag);
+	double* bowFeature = featureExtraction(obj, localFeatureMask, flag);*/
+	double* bowFeature = featureExtraction(img, mask, flag);
 	if(flag)	//cornor less than 10
 		return make_pair(ANOMALY, 0.5);
 	else
@@ -68,7 +68,7 @@ double* ObjRecog::featureExtraction(Mat img, Mat mask, int& flag)
 	drawKeypoints(img, cornor,  mCornor, Scalar::all(-1),DrawMatchesFlags::DEFAULT);  
 	imshow("mCornor", mCornor);*/
 
-	if(cornor.size()>10)
+	if(cornor.size()>5)
 	{
 		bowDE.compute(img, cornor, bowDescriptor);	// 0~1	
 		bowDescriptor *= 100;
@@ -119,7 +119,7 @@ pair<double,double> ObjRecog::do_predict(double* feature)
 	double predict_label = 0;
 	pair<double,double> predict_label_pr;
 	if(flag_predict_probability)
-	{
+	{		
 		prob_estimates = (double *) malloc(nr_class*sizeof(double));
 		predict_label = predict_probability(model_, fnode, prob_estimates);
 
@@ -127,8 +127,11 @@ pair<double,double> ObjRecog::do_predict(double* feature)
 		for(int i=0;i<model_->nr_class;i++)		
 			cout<<(int)(prob_estimates[i] * 100) <<"%\t";								
 		cout<<endl;	
-#endif						
-		predict_label_pr = make_pair(predict_label, prob_estimates[(int)predict_label-1]);
+#endif			
+		int *labels;
+		labels=(int *) malloc(nr_class*sizeof(int));
+		get_labels(model_,labels);
+		predict_label_pr = make_pair(predict_label, prob_estimates[ labels[(int)predict_label-1] -1]);
 		free(prob_estimates);
 	}
 	else	

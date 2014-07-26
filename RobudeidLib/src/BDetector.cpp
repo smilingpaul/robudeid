@@ -152,8 +152,8 @@ double BDetector::updateBumpEvt(pair<double,double>  label_pr)
 	{
 		//cout<< (int)nrEvent[1] * 100 / tagQue.size()<<" "<< (int)nrEvent[2] *100 / tagQue.size()<<endl;	
 		//cout<<(int)nrEvent[2] *100 / tagQue.size() <<"%"<<endl;
-		prBar.push_back(nrEvent[bar] / tagQue.size());	
-		return nrEvent[bar] / tagQue.size();
+		prBar.push_back(nrEvent[HUMP] / tagQue.size());	
+		return nrEvent[HUMP] / tagQue.size();
 	}
 	return 0;
 }

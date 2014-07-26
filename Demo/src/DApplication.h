@@ -11,7 +11,7 @@
 #include "ObjDetection.h"
 #include "ObjRecog.h"
 
-#define RECORD_VIDEO
+//#define RECORD_VIDEO
 
 class DApplication
 {

@@ -8,8 +8,6 @@
 #define CONCAVE 2
 #define BUMP 3
 
-#define other 1
-#define bar 2
 //#define prob
 
 #define for_each_nrEvent(i) for(i = 0; i<3; ++i)
