@@ -9,7 +9,7 @@ BDetector::BDetector(int fps, int thr, bool _detectTurn):
 	maxShift(10),
 	bumpThr(thr),
 	detectionWinSize(fps * 1.5),	//bump detection winsize is 1.5 second
-	recogWinSize(fps * 0.5),
+	recogWinSize(fps * 0.2),
 	detectTurn(_detectTurn),
 	curMax(INT_MIN),
 	curMin(INT_MAX),
