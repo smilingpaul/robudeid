@@ -29,9 +29,11 @@ TrainBow* TrainBow::getSingleton()
 
 void TrainBow::go()
 {		
+	cout<<"local feature extraction..."<<endl;
 	this->readImgs(imgPath + "/hump/");
 	this->readImgs(imgPath + "/anomaly/");
 	this->writeSurfDescriptor();	
+	cout<<"Bag of word clustering..."<<endl;
 	this->trainVocabulary();
 }
 

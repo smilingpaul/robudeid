@@ -38,6 +38,8 @@ void DApplication::go()
 	fps = (int)capture.get(CV_CAP_PROP_FPS);			
 	bDtr = new BDetector(fps, Pubvar::sensitive);		
 	objType = new int[videoLen];
+	for(int i=0; i<videoLen; ++i)
+		objType[i] = ANOMALY;
 
 	int height = (int)capture.get(CV_CAP_PROP_FRAME_HEIGHT),
 		width = (int)capture.get(CV_CAP_PROP_FRAME_WIDTH);	
@@ -112,7 +114,8 @@ inline void DApplication::processing()
 	imshow("detected obj", obj);
 	pair<double,double> label_pr = recog->objEstimate(frame(rectROI), objMask);
 
-	//double pr = 100 * (label_pr.first == HUMP? label_pr.second : 1-label_pr.second);		//probability of raod hump
+	double pr = 100 * (label_pr.first == HUMP? label_pr.second : 1-label_pr.second);		//probability of raod hump
+	cout<< pr <<endl;
 	//putText(frame, "HUMP: " + to_string(pr) + "%" , Point(frame.cols/4, frame.rows/4), cv::FONT_HERSHEY_SIMPLEX, 1.5, CV_RGB(255,0,0),3 );	
 
 	double pr_bar = bDtr->updateBumpEvt(label_pr);
@@ -123,6 +126,7 @@ inline void DApplication::processing()
 		objType[fid] = HUMP;
 	else
 		objType[fid] = ANOMALY;
+
 }
 
 void DApplication::fidControler(int val, void* _this)
