@@ -1,7 +1,7 @@
 #include "ObjRecog.h"
 
 ObjRecog::ObjRecog(const char* SVMmodel, const char* dictPath):
-	minHessian(400),
+	minHessian(200),
 	flag_predict_probability(false),
 	max_nr_attr(512)
 {	
@@ -64,9 +64,9 @@ double* ObjRecog::featureExtraction(Mat img, Mat mask, int& flag)
 	detector->detect(img, cornor, mask);	
 	flag = false;
 
-	/*Mat mCornor;
+	Mat mCornor;
 	drawKeypoints(img, cornor,  mCornor, Scalar::all(-1),DrawMatchesFlags::DEFAULT);  
-	imshow("mCornor", mCornor);*/
+	imshow("mCornor", mCornor);
 
 	if(cornor.size()>5)
 	{
