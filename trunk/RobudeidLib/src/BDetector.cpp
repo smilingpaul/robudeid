@@ -54,10 +54,13 @@ int BDetector::isBump()
 		curMax = yData[i]>curMax ? yData[i] : curMax;
 		curMin = yData[i]<curMin ? yData[i] : curMin;
 
-		if(yData[i] > bumpThr/2)
-			bumpClass = CONVEX;
-		else if(yData[i] < -bumpThr/2)
-			bumpClass = CONCAVE;			
+		if(bumpClass==BUMP)
+		{
+			if(yData[i] >= bumpThr/2)
+				bumpClass = CONVEX;
+			else if(yData[i] < -bumpThr/2)
+				bumpClass = CONCAVE;			
+		}
 	}	
 	
 	bool isturn = xArea > 3*detectionWinSize ? true : false;
