@@ -87,8 +87,12 @@ inline void RApplication::processing()
 
 	
 	bDtr->update(shift);
-	if(bDtr->isBump()!= NOBUMP)
-		putText(frame, "uneven!! " , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );	
+	/*if(bDtr->isBump()!= NOBUMP)
+		putText(frame, "uneven!! " , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );	*/
+	if(bDtr->isBump()== CONCAVE)
+		putText(frame, "CONCAVE uneven!! " , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );
+	else if(bDtr->isBump()== CONVEX)
+		putText(frame, "CONVEX uneven!! " , Point(0,frame.rows/2), cv::FONT_HERSHEY_SIMPLEX, 2.5, CV_RGB(255,0,0),3 );
 }
 
 void RApplication::fidControler(int val, void* _this)
