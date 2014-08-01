@@ -21,9 +21,9 @@ public:
 
 	static DApplication* getSingleton();
 	void go();	
-	static DApplication* singleton;
-private:
 	
+private:
+	static DApplication* singleton;
 	static void fidControler(int, void*);
 	
 	inline void processing();

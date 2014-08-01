@@ -58,6 +58,5 @@ void main(int argc, char* argv[])
 	if(argc>1)
 		Pubvar::videoPath = argv[1];
 	
-	DApplication::getSingleton()->go();	
-	delete DApplication::singleton;
+	DApplication::getSingleton()->go();		
 }
