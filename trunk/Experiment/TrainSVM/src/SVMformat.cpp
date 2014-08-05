@@ -9,7 +9,7 @@ SVMformat* SVMformat::singleton = NULL;
 
 SVMformat::SVMformat():
 	imgPath("sample/training_img/"),
-	bowVocSize(256)
+	bowVocSize(512)
 {	
 	CV_Assert(readBowCodebook());
 }
