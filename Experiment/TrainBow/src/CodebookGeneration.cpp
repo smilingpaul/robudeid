@@ -9,7 +9,7 @@ TrainBow* TrainBow::singleton = NULL;
 
 TrainBow::TrainBow():
 	imgPath("sample/training_img/"),
-	bowVocSize(256)
+	bowVocSize(512)
 {
 	readSurfDescriptor();
 }
