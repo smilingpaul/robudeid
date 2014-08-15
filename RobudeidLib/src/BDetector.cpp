@@ -163,8 +163,8 @@ double BDetector::updateBumpEvt(pair<double,double>  label_pr)
 
 bool BDetector::barExist()
 {
-	for(int i=0; i <prBar.size(); ++i)
-		if(prBar.at(i) > 0.6)	//7%
+	for(int i=prBar.size() - recogWinSize; i <prBar.size(); ++i)
+		if(prBar.at(i) > 0.7)	//7%
 			return true;
 
 	return false;
